@@ -48,7 +48,7 @@ int main(){
         printf("%d\n",ub);
     }
     else {
-        printf("d\n",lb);
+        printf("%d\n",lb);
     }
 
 
