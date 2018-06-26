@@ -27,33 +27,20 @@ int main(){
     scanf("%d", &A[i]);
   }
     
-    lb = 1;
-    ub = 100000000;
+    lb = 0;
+    ub = 1000000000;
     while (ub - lb > 1){
-        if (p(lb) && p(ub) && p((lb + ub)/2)){
-            ub = (lb + ub)/2;
+        int m = (ub + lb)/2;
+        if(p(m)){
+            ub = m;
         }
-        else if(p(lb) && p(ub) && !p((lb + ub)/2)){
-            lb = (lb + ub)/2;
+        else {
+            lb = m;
         }
-        else if(!p(lb) && p(ub) && p((lb + ub)/2)){
-            ub = (lb + ub)/2;
-        }
-        else if(!p(lb) && p(ub) && !p((lb + ub)/2)){
-            lb = (lb + ub)/2;
-        }
-        else if (p(lb) && !p(ub)){
-            ub = (lb + ub)/2;
-        }
-    
     }
-    if (p(ub) && p(lb)){
-        printf("%d\n",lb);
-    }
-    else {
         printf("%d\n",ub);
-    }
-
+    
    
   return 0;
 }
+    

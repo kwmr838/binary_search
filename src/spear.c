@@ -6,6 +6,7 @@ int k;
 int A[100000];
 
 int p(int m){
+    //1 作れる 0　作れない
     int i;
     int l = 0;
     for(i = 0;i < n; i++){
@@ -21,35 +22,18 @@ int main(){
   for(i = 0; i < n; i++){
     scanf("%d", &A[i]);
   }
-    lb = 1;
-    ub = 100000000;
+    lb = 0;
+    ub = 1000000000;
     while (ub - lb > 1){
-        if(p(ub)){
-            lb = ub-1; //強制終了
-        }
-        else if(p(lb) && p((lb+ ub)/2)){
-            lb = (lb + ub) / 2;
-        }
-        else if(p(lb) && !p((lb+ub)/2)){
-            ub = (lb + ub) /2;
+        int m = (ub + lb)/2;
+        if(p(m)){
+            lb = m;
         }
         else {
-            ub = lb + 1; //強制終了
+            ub = m;
         }
     }
-    
-    if (p(ub) && p(lb)){
-        printf("%d\n",lb);
-    }
-    else if(!p(ub) && !p(lb)){
-        printf("0\n");
-    }
-    else if(p(ub) && !p(lb)){
-        printf("%d\n",ub);
-    }
-    else {
-        printf("%d\n",lb);
-    }
+    printf("%d\n",lb);
 
 
   return 0;
